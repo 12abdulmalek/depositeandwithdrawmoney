@@ -25,11 +25,16 @@ function upadateAmount(value,isadd){
 }
 document.getElementById('deposit-button').addEventListener('click',function(){
     const depositAmount1= getInputValue('deposit-input');
-    totalAmount1('deposit-amount',depositAmount1)
-    upadateAmount(depositAmount1 ,true);
+    if(depositAmount1>0){
+        totalAmount1('deposit-amount',depositAmount1)
+        upadateAmount(depositAmount1 ,true);
+    }
+    
 })
 document.getElementById('withdraw-button').addEventListener('click',function(){
     const withdrawInputAmount = getInputValue('withdraw-input');
-    totalAmount1('withdraw-amount',withdrawInputAmount);
-    upadateAmount( withdrawInputAmount ,false);
+    if(withdrawInputAmount>0){
+        totalAmount1('withdraw-amount',withdrawInputAmount);
+        upadateAmount( withdrawInputAmount ,false);
+    } 
 })
