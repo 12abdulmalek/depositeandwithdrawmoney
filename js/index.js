@@ -12,10 +12,17 @@ function totalAmount1(input,inputvalue){
     const totalDepositAmount=depositAmountTotal+inputvalue;
     depositAmount.innerText=totalDepositAmount;
 }
-function upadateAmount(value,isadd){
+function currentBalance(){
     const totalBalance=document.getElementById('total-balance');
     const previousBalance=totalBalance.innerText;
-    const previusBalanceAmount=parseFloat(previousBalance);   
+    const previusBalanceAmount=parseFloat(previousBalance);  
+    return previusBalanceAmount;
+}
+function upadateAmount(value,isadd){
+    const totalBalance=document.getElementById('total-balance');
+    // const previousBalance=totalBalance.innerText;
+    // const previusBalanceAmount=parseFloat(previousBalance);   
+    const previusBalanceAmount= currentBalance();
     if(isadd==true){
         totalBalance.innerText=previusBalanceAmount+value;
     }
@@ -33,8 +40,18 @@ document.getElementById('deposit-button').addEventListener('click',function(){
 })
 document.getElementById('withdraw-button').addEventListener('click',function(){
     const withdrawInputAmount = getInputValue('withdraw-input');
-    if(withdrawInputAmount>0){
+    const previousBalance= currentBalance()
+    if(withdrawInputAmount>0 && previousBalance>withdrawInputAmount ){
+        document.body.style.background='white';
         totalAmount1('withdraw-amount',withdrawInputAmount);
         upadateAmount( withdrawInputAmount ,false);
     } 
+    // else if(withdrawInputAmount<previousBalance){
+    //     document.body.style.background='white';
+    // }
+    else if(withdrawInputAmount>previousBalance){
+        document.body.style.background='red';
+        alert('vai ami gorib eto taka amr kache nai');
+    }
+     
 })
