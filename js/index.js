@@ -51,7 +51,7 @@ document.getElementById('withdraw-button').addEventListener('click',function(){
     // }
     else if(withdrawInputAmount>previousBalance){
         document.body.style.background='red';
-        alert('vai ami gorib eto taka amr kache nai');
+        alert('vai ami gorib eto taka amr kache nai maf chai vai');
     }
      
 })
